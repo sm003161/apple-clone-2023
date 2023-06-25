@@ -1,0 +1,214 @@
+@charset 'utf-8';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.7/dist/web/static/pretendard.css");
+
+html {
+	font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    overflow-x: hidden;
+    color: #333;
+    letter-spacing: -0.04em;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* 내비게이션 */
+
+nav.global-nav {
+    height: 44px;
+    padding: 0 1rem;
+}
+
+nav.local-nav {
+    height: 52px;
+    border-bottom: 1px solid #ebebeb;
+    padding: 0 1rem;
+}
+
+nav.global-nav > .global-nav-links,
+nav.local-nav > .local-nav-links {
+    height: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+nav.global-nav > .global-nav-links {
+    justify-content: space-between;
+}
+
+nav.global-nav > .global-nav-links > a {
+    text-align: center;  
+}
+
+.product-name {
+    margin-right: auto;
+    font-size: 1.4rem;
+    font-weight: 800;
+}
+
+.local-nav-links a:not(.product-name) {
+    margin-left: 2em;
+    font-size: 0.8rem;
+}
+
+/* 컨텐츠 */
+/* 모바일 */
+
+.scroll-section {
+    padding-top: 50vh;
+    text-align: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.scroll-section > * {
+    padding: 0 1rem;
+}
+
+#scroll-section-0 > h1 {
+    font-size: 3.5rem;
+}
+
+.scroll-section > .main-msg {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.3;
+}
+
+#scroll-section-0 > .main-msg {
+    margin-bottom: 5px;
+    height: 5em;
+}
+
+#scroll-section-0 > .main-msg > p {
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+#scroll-section-1 > p,
+#scroll-section-3 > .canvas-caption {
+    font-size: 1.1rem;
+    text-align: left;
+    color: #888;
+}
+
+#scroll-section-1 > p > strong {
+    font-size: 3rem;
+    float: left;
+    margin-right: 1rem;
+    color: #333;
+}
+
+#scroll-section-2 > .main-msg > p > small {
+    font-size: 1.1rem;
+}
+
+#scroll-section-2 > .main-msg > p {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+#scroll-section-2 > .desc-msg {
+    width: 50vw;
+    text-align: left;
+}
+
+#scroll-section-2 > .desc-msg > .pin {
+    background-color: #333;
+    width: 1px;
+    height: 100px;
+}
+
+#scroll-section-3 > .mid-msg {
+    width: fit-content;
+    margin: 0 auto;
+    padding: 0 1rem;
+    font-size: 1.8rem;
+    color: #888;
+    line-height: 1.5;
+    text-align: left;
+}
+
+#scroll-section-3 > .mid-msg > strong {
+    font-weight: 800;
+    color: #333;
+}
+
+footer {
+    margin-top: 5rem;
+    padding: 3rem;
+    text-align: center;
+    background-color: #888;
+    color: white;
+}
+
+
+/* PC */
+
+@media (min-width: 1024px) {
+    .scroll-section {
+        padding-top: 30vh;
+    }
+        
+    #scroll-section-0 > h1 {
+        font-size: 5rem;
+    }
+    
+    #scroll-section-0 > .main-msg {
+        margin-top: 100px;
+        height: 13em;
+    }
+    
+    #scroll-section-0 > .main-msg > p {
+        font-size: 3rem;
+    }
+    
+    #scroll-section-1 > p,
+    #scroll-section-3 > .canvas-caption {
+        font-size: 1.8rem;
+    }
+    
+    #scroll-section-1 > p > strong {
+        font-size: 5rem;
+    }
+    
+    #scroll-section-2 > .main-msg > p > small {
+        font-size: 1.5rem;
+    }
+    
+    #scroll-section-2 > .main-msg > p {
+        font-size: 5rem;
+        line-height: 1.1;
+    }
+    
+    #scroll-section-2 > .desc-msg {
+        width: 300px;
+        font-size: 1.3rem;
+    }
+    
+    #scroll-section-3 > .mid-msg {
+        width: 100%;
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+        
+    footer {
+        margin-top: 10rem;
+        padding: 5rem;
+    }
+}
