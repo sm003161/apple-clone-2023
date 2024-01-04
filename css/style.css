@@ -1,0 +1,37 @@
+@charset 'utf-8';
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.7/dist/web/static/pretendard.css");
+
+html {
+	font-family: 'Pretendard', sans-serif;
+    font-size: 16px;
+}
+
+body {
+    overflow-x: hidden;
+    color: #333;
+    letter-spacing: -0.04em;
+    background-color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* 내비게이션 */
+header > nav.global-nav {
+    padding: 0.75rem;
+}
+
+header > nav.global-nav > ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+header > nav.global-nav > ul > li > a {
+    font-size: 0.8rem;
+}
