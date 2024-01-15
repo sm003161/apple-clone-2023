@@ -3,7 +3,8 @@
 
 :root {
  --main-black: #333;
- --main-gray: #ebebeb;
+ --main-gray: #aaa;
+ --main-light-gray: #ebebeb;
 }
 
 html {
@@ -14,7 +15,7 @@ html {
 body {
  overflow-x: hidden;
  color: var(--main-black);
- letter-spacing: -0.04em;
+ letter-spacing: -0.05em;
  background-color: white;
 }
 
@@ -24,38 +25,45 @@ a {
 }
 
 p {
- line-height: 1.6;
+ line-height: 1.4;
 }
 
 /* 내비게이션 */
 header > nav.global-nav {
- padding: 0.75rem 0.75rem 1rem 0.75rem ;
+ position: absolute;
+ padding: 0.75rem;
+ width: 100%;
 }
 
 header > nav.global-nav > ul {
  display: flex;
  justify-content: space-between;
+ line-height: 0.75;
 }
 
 header > nav.global-nav > ul > li > a {
- font-size: 1rem;
+ font-size: 0.75rem;
 }
 
 nav.local-nav {
  display: flex;
  align-items: center;
- padding: 0 0.75rem 0.75rem;
- border-bottom: 1px solid var(--main-gray);
+ padding: 0.75rem;
+ border-bottom: 1px solid var(--main-light-gray);
+ position: absolute;
+ top: calc(0.75rem * 3);
+ background-color: #fff;
+ width: 100%;
 }
 
 nav.local-nav > .product-name {
- font-size: 1.75rem;
- font-weight: 800;
+ font-size: 1.25rem;
+ font-weight: 700;
  margin-right: auto;
 }
 
 nav.local-nav > ul > li {
- font-size: 1rem;
+ font-size: 0.75rem;
  display: inline-block;
 }
 
@@ -66,4 +74,117 @@ nav.local-nav > ul > li > a {
 
 nav.local-nav > ul > li:last-child > a {
  padding-right: 0;
+}
+
+/* 컨텐츠 */
+.scroll-section {
+ padding: 50vh 1rem 0 1rem;
+ border-bottom: 1px solid red;
+}
+
+.scroll-section-0 > h1 {
+ font-size: 3.75rem;
+ text-align: center;
+}
+
+.main-message {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ /* height: 5rem; */
+ font-size: 2.5rem;
+ /* background-color: #ebebeb; */
+ margin-bottom: 5px;
+ text-align: center;
+}
+
+.scroll-section > div.main-message > p {
+ font-size: 3rem;
+ font-weight: 800;
+ line-height: 1.3;
+}
+
+.scroll-section-3 > p,
+.scroll-section-1 > p {
+ font-size: 1.5rem;
+}
+
+.scroll-section-1 > p > strong,
+.scroll-section-3 > p > strong {
+ font-size: 3rem;
+ font-weight: 700;
+ color: var(--main-black);
+ margin-right: 0.75rem;
+}
+
+.scroll-section-2 > div.main-message > small {
+ font-size: 1.5rem;
+ display: block;
+ text-align: start;
+}
+
+.scroll-section-2 > div.main-message > .pin {
+ width: 1px;
+ height: 100px;
+ background-color: var(--main-black);
+}
+
+footer {
+ margin-top: 5rem;
+ background-color: var(--main-gray);
+}
+
+footer > p {
+ padding: 30px 0;
+ text-align: center;
+}
+
+.sticky-elem {
+ position: fixed;
+ top: 0;
+ left: 0;
+ display: none;
+}
+
+#js-showScene0 .scroll-section-0 > .sticky-elem,
+#js-showScene1 .scroll-section-1 > .sticky-elem,
+#js-showScene2 .scroll-section-2 > .sticky-elem,
+#js-showScene3 .scroll-section-3 > .sticky-elem {
+ display: block;
+}
+
+
+
+
+
+
+
+
+
+@media (min-width: 834px) {
+ html {
+  font-size: 90%;
+ }
+ 
+ /* 컨텐츠 */
+ .scroll-section {
+  padding: 25vh 1.5rem 0 1.5rem;
+ }
+
+ .scroll-section-0 > h1 {
+  font-size: 10rem;
+ }
+
+ .scroll-section-0 > div.main-message > p {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+ }
+ 
+ .scroll-section-1 > p > strong,
+ .scroll-section-3 > p > strong {
+  font-size: 4rem;
+  font-weight: 800;
+ }
 }
