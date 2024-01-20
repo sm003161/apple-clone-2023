@@ -11,7 +11,14 @@
    heightNum: 5,
    scrollHeight: 0,
    objs: {
-    container: document.querySelector('#js-scrollSection-0')
+    container: document.querySelector('#js_scrollSection-0'),
+    stickyMsg11: document.querySelector('#js_scrollSection-0 #js_stickyMsg11'),
+    stickyMsg12: document.querySelector('#js_scrollSection-0 #js_stickyMsg12'),
+    stickyMsg13: document.querySelector('#js_scrollSection-0 #js_stickyMsg13')
+   },
+   value: {
+    stickyMsgOpacity: [0, 1],
+    stickyMsgTransform: ['translateY(0px)', 'translateY(-30px)']
    }
   },
   {
@@ -20,7 +27,7 @@
    heightNum: 5,
    scrollHeight: 0,
    objs: {
-    container: document.querySelector('#js-scrollSection-1')
+    container: document.querySelector('#js_scrollSection-1')
    }
   },
   {
@@ -29,7 +36,7 @@
    heightNum: 5,
    scrollHeight: 0,
    objs: {
-    container: document.querySelector('#js-scrollSection-2')
+    container: document.querySelector('#js_scrollSection-2')
    }
   },
   {
@@ -38,7 +45,7 @@
    heightNum: 5,
    scrollHeight: 0,
    objs: {
-    container: document.querySelector('#js-scrollSection-3')
+    container: document.querySelector('#js_scrollSection-3')
    }
   }
  ];
@@ -60,7 +67,24 @@
      break;
     }
    }
-  document.body.setAttribute("id", `js-showScene${currentScene}`);
+  document.body.setAttribute("id", `js_showScene${currentScene}`);
+ }
+
+ function playAnimation() {
+  switch (currentScene) {
+   case 0:
+    // console.log(`${currentScene} play`);
+    break;
+   case 1:
+    // console.log(`${currentScene} play`);
+    break;
+   case 2:
+    // console.log(`${currentScene} play`);
+    break;
+   case 3:
+    // console.log(`${currentScene} play`);
+    break;
+  }
  }
 
  function scrollLoop() {
@@ -72,14 +96,15 @@
 
   if (yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight) {
    currentScene++;
-   document.body.setAttribute("id", `js-showScene${currentScene}`);
+   document.body.setAttribute("id", `js_showScene${currentScene}`);
   }
 
   if (yOffset < prevScrollHeight) {
    if (yOffset === 0) return;
    currentScene--;
-   document.body.setAttribute("id", `js-showScene${currentScene}`);
+   document.body.setAttribute("id", `js_showScene${currentScene}`);
   }
+  playAnimation()
  }
 
  window.addEventListener('load', setLayout);

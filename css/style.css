@@ -147,10 +147,10 @@ footer > p {
  display: none;
 }
 
-#js-showScene0 .scroll-section-0 > .sticky-elem,
-#js-showScene1 .scroll-section-1 > .sticky-elem,
-#js-showScene2 .scroll-section-2 > .sticky-elem,
-#js-showScene3 .scroll-section-3 > .sticky-elem {
+#js_showScene0 .scroll-section-0 > .sticky-elem,
+#js_showScene1 .scroll-section-1 > .sticky-elem,
+#js_showScene2 .scroll-section-2 > .sticky-elem,
+#js_showScene3 .scroll-section-3 > .sticky-elem {
  display: block;
 }
 
