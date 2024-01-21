@@ -92,11 +92,15 @@ nav.local-nav > ul > li:last-child > a {
  flex-direction: column;
  align-items: center;
  justify-content: center;
- /* height: 5rem; */
  font-size: 2.5rem;
- /* background-color: #ebebeb; */
  margin-bottom: 5px;
  text-align: center;
+ width: 100%;
+ opacity: 0;
+}
+
+#js_showScene0 .scroll-section-0 > div.main-message:not(#js_stickyMsg11) {
+ display: none;
 }
 
 .scroll-section > div.main-message > p {
@@ -105,8 +109,8 @@ nav.local-nav > ul > li:last-child > a {
  line-height: 1.3;
 }
 
-.scroll-section-3 > p,
-.scroll-section-1 > p {
+.scroll-section-1 > p,
+ .scroll-section-3 > p {
  font-size: 1.5rem;
 }
 

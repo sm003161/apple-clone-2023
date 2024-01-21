@@ -16,7 +16,7 @@
     stickyMsg12: document.querySelector('#js_scrollSection-0 #js_stickyMsg12'),
     stickyMsg13: document.querySelector('#js_scrollSection-0 #js_stickyMsg13')
    },
-   value: {
+   values: {
     stickyMsgOpacity: [0, 1],
     stickyMsgTransform: ['translateY(0px)', 'translateY(-30px)']
    }
@@ -70,12 +70,31 @@
   document.body.setAttribute("id", `js_showScene${currentScene}`);
  }
 
+ function calcValue(sceneValues, currentYOffset) {
+  let rv;
+  let scrollPercentage = currentYOffset / sceneInfo[currentScene].scrollHeight;
+  
+  rv = ( scrollPercentage * ( sceneValues[1] - sceneValues[0]) + sceneValues[0] );
+  
+  return rv;
+ }
+
  function playAnimation() {
+  let sceneObjs = sceneInfo[currentScene].objs;
+  let sceneValues = sceneInfo[currentScene].values;
+  let currentYOffset = yOffset - prevScrollHeight;
+  
   switch (currentScene) {
    case 0:
-    // console.log(`${currentScene} play`);
+    // 현재 scene 에 적용할 CSS 값 선언하기
+    let stickyMsgOpacityIn = calcValue( sceneValues.stickyMsgOpacity, currentYOffset );
+    
+    sceneObjs.stickyMsg11.style.opacity = stickyMsgOpacityIn;
+    console.log( stickyMsgOpacityIn );
+
     break;
    case 1:
+
     // console.log(`${currentScene} play`);
     break;
    case 2:
