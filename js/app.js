@@ -17,7 +17,8 @@
     stickyMsg13: document.querySelector('#js_scrollSection-0 #js_stickyMsg13')
    },
    values: {
-    stickyMsgOpacity: [0, 1],
+    stickyMsg11Opacity: [0, 1, { start: 0.1, end: 0.2 }],
+    stickyMsg12Opacity: [0, 1, { start: 0.3, end: 0.4 }],
     stickyMsgTransform: ['translateY(0px)', 'translateY(-30px)']
    }
   },
@@ -71,11 +72,21 @@
  }
 
  function calcValue(sceneValues, currentYOffset) {
+  // 재생구간 스크롤 위치를 절댓값으로 환산하기
   let rv;
-  let scrollPercentage = currentYOffset / sceneInfo[currentScene].scrollHeight;
-  
-  rv = ( scrollPercentage * ( sceneValues[1] - sceneValues[0]) + sceneValues[0] );
-  
+  const scrollHeight = sceneInfo[currentScene].scrollHeight;
+  const scrollPercentage = currentYOffset / scrollHeight;
+
+  if( sceneValues.length === 3 ) {
+   const animationScrollStart = scrollHeight * sceneValues[2].start;
+   const animationScrollEnd = scrollHeight * sceneValues[2].end;
+   const animationDuration = animationScrollEnd - animationScrollStart;
+   
+   rv = (( currentYOffset - animationScrollStart ) / animationDuration ) * (( sceneValues[1] - sceneValues[0]) + sceneValues[0]) ;
+  } else {
+   rv = ( scrollPercentage * ( sceneValues[1] - sceneValues[0]) + sceneValues[0] );
+  }
+
   return rv;
  }
 
@@ -87,10 +98,10 @@
   switch (currentScene) {
    case 0:
     // 현재 scene 에 적용할 CSS 값 선언하기
-    let stickyMsgOpacityIn = calcValue( sceneValues.stickyMsgOpacity, currentYOffset );
+    let stickyMsg11OpacityIn = calcValue( sceneValues.stickyMsg11Opacity, currentYOffset );
     
-    sceneObjs.stickyMsg11.style.opacity = stickyMsgOpacityIn;
-    console.log( stickyMsgOpacityIn );
+    sceneObjs.stickyMsg11.style.opacity = stickyMsg11OpacityIn;
+    console.log( stickyMsg11OpacityIn );
 
     break;
    case 1:

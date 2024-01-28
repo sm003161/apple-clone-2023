@@ -96,6 +96,7 @@ nav.local-nav > ul > li:last-child > a {
  margin-bottom: 5px;
  text-align: center;
  width: 100%;
+ height: 100vh;
  opacity: 0;
 }
 
@@ -110,7 +111,7 @@ nav.local-nav > ul > li:last-child > a {
 }
 
 .scroll-section-1 > p,
- .scroll-section-3 > p {
+.scroll-section-3 > p {
  font-size: 1.5rem;
 }
 
@@ -155,7 +156,7 @@ footer > p {
 #js_showScene1 .scroll-section-1 > .sticky-elem,
 #js_showScene2 .scroll-section-2 > .sticky-elem,
 #js_showScene3 .scroll-section-3 > .sticky-elem {
- display: block;
+ display: flex;
 }
 
 
