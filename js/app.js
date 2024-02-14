@@ -11,21 +11,24 @@
   heightNum: 5,
   scrollHeight: 0,
   objs: {
-  container: document.querySelector('#js_scrollSection-0'),
-  stickyMsg11: document.querySelector('#js_scrollSection-0 #js_stickyMsg11'),
-  stickyMsg12: document.querySelector('#js_scrollSection-0 #js_stickyMsg12'),
-  stickyMsg13: document.querySelector('#js_scrollSection-0 #js_stickyMsg13')
+   container: document.querySelector('#js_scrollSection-0'),
+   stickyMsg00: document.querySelector('#js_scrollSection-0 #js_stickyMsg00'),
+   stickyMsg01: document.querySelector('#js_scrollSection-0 #js_stickyMsg01'),
+   stickyMsg02: document.querySelector('#js_scrollSection-0 #js_stickyMsg02'),
   },
   values: {
-  stickyMsg11OpacityIn: [ 0, 1, { start: 0.1, end: 0.25 }],
-  stickyMsg11OpacityOut: [ 1, 0, { start: 0.3, end: 0.35 }],
-  stickyMsg11TransformIn: [ 5, -5, { start: 0.1, end: 0.35 } ],
-  stickyMsg12OpacityIn: [ 0, 1, { start: 0.35, end: 0.5 }],
-  stickyMsg12OpacityOut: [ 1, 0, { start: 0.55, end: 0.6 }],
-  stickyMsg12TransformIn: [ 5, -5, { start: 0.35, end: 0.6 } ],
-  stickyMsg13OpacityIn: [ 0, 1, { start: 0.6, end: 0.75 }],
-  stickyMsg13OpacityOut: [ 1, 0, { start: 0.8, end: 0.85 }],
-  stickyMsg13TransformIn: [ 5, -5, { start: 0.6, end: 0.85 } ],
+   stickyMsg00OpacityIn: [ 0, 1, { start: 0.1, end: 0.3 }],
+   stickyMsg00OpacityOut: [ 1, 0, { start: 0.3, end: 0.33 }],
+   stickyMsg00TransformIn: [ 5, -5, { start: 0.1, end: 0.3 } ],
+   stickyMsg00TransformOut: [ -5, -8, { start: 0.3, end: 0.33 } ],
+   stickyMsg01OpacityIn: [ 0, 1, { start: 0.35, end: 0.55 }],
+   stickyMsg01OpacityOut: [ 1, 0, { start: 0.55, end: 0.58 }],
+   stickyMsg01TransformIn: [ 5, -5, { start: 0.35, end: 0.55 }],
+   stickyMsg01TransformOut: [ -5, -8, { start: 0.55, end: 0.58 }],
+   stickyMsg02OpacityIn: [ 0, 1, { start: 0.6, end: 0.8 }],
+   stickyMsg02OpacityOut: [ 5, 0, { start: 0.8, end: 0.83 }],
+   stickyMsg02TransformIn: [ 4, -5, { start: 0.6, end: 0.8 }],
+   stickyMsg02TransformOut: [ -5, -8, { start: 0.8, end: 0.83 } ],
   }
  },
  {
@@ -34,7 +37,7 @@
   heightNum: 5,
   scrollHeight: 0,
   objs: {
-  container: document.querySelector('#js_scrollSection-1')
+   container: document.querySelector('#js_scrollSection-1')
   }
  },
  {
@@ -43,7 +46,10 @@
   heightNum: 5,
   scrollHeight: 0,
   objs: {
-  container: document.querySelector('#js_scrollSection-2')
+   container: document.querySelector('#js_scrollSection-2'),
+   stickyMsg20: document.querySelector('#js_scrollSection-2 #js_stickyMsg20'),
+   stickyMsg21: document.querySelector('#js_scrollSection-2 #js_stickyMsg21'),
+   stickyMsg22: document.querySelector('#js_scrollSection-2 #js_stickyMsg22'),
   }
  },
  {
@@ -52,7 +58,7 @@
   heightNum: 5,
   scrollHeight: 0,
   objs: {
-  container: document.querySelector('#js_scrollSection-3')
+   container: document.querySelector('#js_scrollSection-3')
   }
  }
  ];
@@ -61,18 +67,23 @@
  function setLayout() {
  // 각 섹션의 높이 지정해주기
   for (let i = 0; i < sceneInfo.length; i++) {
-  sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
-  sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
+   if (sceneInfo[i].type === "sticky") {
+    sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
+   } else if (sceneInfo[i].type === "normal"){
+    sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
+   }
+
+   sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
   }
 
   yOffset = window.scrollY;
   let totalScrollHeight = 0;
   for (let i = 0; i < sceneInfo.length; i++) {
-  totalScrollHeight += sceneInfo[i].scrollHeight;
-  if (totalScrollHeight >= yOffset) {
-   currentScene = i;
-   break;
-  }
+   totalScrollHeight += sceneInfo[i].scrollHeight;
+   if (totalScrollHeight >= yOffset) {
+    currentScene = i;
+    break;
+   }
   }
  document.body.setAttribute("id", `js_showScene${currentScene}`);
  }
@@ -114,38 +125,34 @@
 
   switch (currentScene) {
    case 0:
+
    // 현재 scene 에 적용할 CSS 값 선언하기
-   const msg11OpacityIn = calcValue( sceneValues.stickyMsg11OpacityIn, currentYOffset );
-   const msg11OpacityOut = calcValue( sceneValues.stickyMsg11OpacityOut, currentYOffset );
-   const msg11TransformIn = calcValue( sceneValues.stickyMsg11TransformIn, currentYOffset );
-   const msg12OpacityIn = calcValue( sceneValues.stickyMsg12OpacityIn, currentYOffset );
-   const msg12OpacityOut = calcValue( sceneValues.stickyMsg12OpacityOut, currentYOffset );
-   const msg12TransformIn = calcValue( sceneValues.stickyMsg12TransformIn, currentYOffset );
-   const msg13OpacityIn = calcValue( sceneValues.stickyMsg13OpacityIn, currentYOffset );
-   const msg13OpacityOut = calcValue( sceneValues.stickyMsg13OpacityOut, currentYOffset );
-   const msg13TransformIn = calcValue( sceneValues.stickyMsg13TransformIn, currentYOffset );
 
-   sceneObjs.stickyMsg11.style.transform = `translateY(${msg11TransformIn}%)`;
-   sceneObjs.stickyMsg12.style.transform = `translateY(${msg12TransformIn}%)`;
-   sceneObjs.stickyMsg13.style.transform = `translateY(${msg13TransformIn}%)`;
 
-   if (scrollPercentage <= 0.28) { 
-    sceneObjs.stickyMsg11.style.opacity = msg11OpacityIn;
+   if (scrollPercentage <= 0.3) { 
+    sceneObjs.stickyMsg00.style.opacity = calcValue( sceneValues.stickyMsg00OpacityIn, currentYOffset );
+    sceneObjs.stickyMsg00.style.transform = `translateY(${calcValue( sceneValues.stickyMsg00TransformIn, currentYOffset )}%)`;
    } else { 
-   sceneObjs.stickyMsg11.style.opacity = msg11OpacityOut;
+    sceneObjs.stickyMsg00.style.opacity = calcValue( sceneValues.stickyMsg00OpacityOut, currentYOffset );
+    sceneObjs.stickyMsg00.style.transform = `translateY(${calcValue( sceneValues.stickyMsg00TransformOut, currentYOffset )}%)`;
    }
    
-   if (scrollPercentage <= 0.53) { 
-    sceneObjs.stickyMsg12.style.opacity = msg12OpacityIn;
+   if (scrollPercentage <= 0.55) { 
+    sceneObjs.stickyMsg01.style.opacity = calcValue( sceneValues.stickyMsg01OpacityIn, currentYOffset );
+    sceneObjs.stickyMsg01.style.transform = `translateY(${calcValue( sceneValues.stickyMsg01TransformIn, currentYOffset )}%)`;
    } else { 
-   sceneObjs.stickyMsg12.style.opacity = msg12OpacityOut;
+    sceneObjs.stickyMsg01.style.opacity = calcValue( sceneValues.stickyMsg01OpacityOut, currentYOffset );
+    sceneObjs.stickyMsg01.style.transform = `translateY(${calcValue( sceneValues.stickyMsg01TransformOut, currentYOffset )}%)`;
    }
-   if (scrollPercentage <= 0.78) { 
-    sceneObjs.stickyMsg13.style.opacity = msg13OpacityIn;
+
+   if (scrollPercentage <= 0.8) { 
+    sceneObjs.stickyMsg02.style.opacity = calcValue( sceneValues.stickyMsg02OpacityIn, currentYOffset );
+    sceneObjs.stickyMsg02.style.transform = `translateY(${calcValue( sceneValues.stickyMsg02TransformIn, currentYOffset )}%)`;
    } else { 
-   sceneObjs.stickyMsg13.style.opacity = msg13OpacityOut;
+    sceneObjs.stickyMsg02.style.opacity = calcValue( sceneValues.stickyMsg02OpacityOut, currentYOffset );
+    sceneObjs.stickyMsg02.style.transform = `translateY(${calcValue( sceneValues.stickyMsg02TransformOut, currentYOffset )}%)`;
    }
-   
+
    break;
 
    case 1:
