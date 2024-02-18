@@ -34,6 +34,7 @@ header > nav.global-nav {
  padding: 0.75rem;
  width: 100%;
  z-index: 50;
+ background-color: white;
 }
 
 header > nav.global-nav > ul {
@@ -55,6 +56,7 @@ nav.local-nav {
  top: calc(0.75rem * 3);
  width: 100%;
  z-index: 50;
+ background-color: white;
 }
 
 nav.local-nav > .product-name {
@@ -80,7 +82,7 @@ nav.local-nav > ul > li:last-child > a {
 /* 컨텐츠 */
 .scroll-section {
  padding: 50vh 1rem 0 1rem;
- border-bottom: 1px solid red;
+ /* border-bottom: 1px solid red; */
 }
 
 .scroll-section-0 > h1 {
@@ -105,6 +107,7 @@ nav.local-nav > ul > li:last-child > a {
  font-weight: 800;
  line-height: 1.3;
  width: 100%;
+ color: white;
 }
 
 .scroll-section-1 > p,
@@ -194,7 +197,7 @@ footer > p {
  }
 
  .scroll-section-0 > .sticky-canvas > canvas {
-  background-color: hsla(0, 0%, 55%, 0.3);
+  /* background-color: hsla(0, 0%, 55%, 0.3); */
  }
 
  .scroll-section-0 > h1 {

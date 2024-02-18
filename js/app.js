@@ -53,13 +53,9 @@
     container: document.querySelector("#js_scrollSection-2"),
     stickyMsg20: document.querySelector("#js_scrollSection-2 #js_stickyMsg20"),
     stickyMsg21: document.querySelector("#js_scrollSection-2 #js_stickyMsg21"),
-    stickyPin21: document.querySelector(
-     "#js_scrollSection-2 #js_stickyMsg21 #js_stickyCont21 #js_stickyPin21"
-    ),
+    stickyPin21: document.querySelector("#js_scrollSection-2 #js_stickyMsg21 #js_stickyCont21 #js_stickyPin21"),
     stickyMsg22: document.querySelector("#js_scrollSection-2 #js_stickyMsg22"),
-    stickyPin22: document.querySelector(
-     "#js_scrollSection-2 #js_stickyMsg22 #js_stickyCont22 #js_stickyPin22"
-    ),
+    stickyPin22: document.querySelector("#js_scrollSection-2 #js_stickyMsg22 #js_stickyCont22 #js_stickyPin22"),
    },
    values: {
     stickyMsg20OpacityIn: [0, 1, { start: 0.1, end: 0.3 }],
@@ -132,19 +128,14 @@
 
   let rv;
 
+  // 애니메이션에 적용될 구간이 정해져있을 경우
   if (sceneValues.length === 3) {
    const animationScrollStart = scrollHeight * sceneValues[2].start;
    const animationScrollEnd = scrollHeight * sceneValues[2].end;
    const animationDuration = animationScrollEnd - animationScrollStart;
 
-   if (
-    currentYOffset >= animationScrollStart &&
-    currentYOffset <= animationScrollEnd
-   ) {
-    rv =
-     ((currentYOffset - animationScrollStart) / animationDuration) *
-      (sceneValues[1] - sceneValues[0]) +
-     sceneValues[0];
+   if (currentYOffset >= animationScrollStart && currentYOffset <= animationScrollEnd) {
+    rv = ((currentYOffset - animationScrollStart) / animationDuration) * (sceneValues[1] - sceneValues[0]) + sceneValues[0];
    } else if (currentYOffset < animationScrollStart) {
     rv = sceneValues[0];
    } else if (currentYOffset > animationScrollEnd) {
@@ -166,136 +157,62 @@
 
   switch (currentScene) {
    case 0:
+    let activeSequence = Math.round(calcValue(sceneValues.canvasImgIndex, currentYOffset));
+    sceneInfo[0].objs.ctx.drawImage(sceneInfo[0].objs.imgObj[activeSequence], 0, 0);
+    console.log(sceneInfo[0].objs.imgObj[activeSequence]);
+
     // 현재 scene 에 적용할 CSS 값 선언하기
     if (scrollPercentage <= 0.3) {
-     sceneObjs.stickyMsg00.style.opacity = calcValue(
-      sceneValues.stickyMsg00OpacityIn,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg00.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg00TransformIn,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg00.style.opacity = calcValue(sceneValues.stickyMsg00OpacityIn, currentYOffset);
+     sceneObjs.stickyMsg00.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg00TransformIn, currentYOffset)}%, 0)`;
     } else {
-     sceneObjs.stickyMsg00.style.opacity = calcValue(
-      sceneValues.stickyMsg00OpacityOut,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg00.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg00TransformOut,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg00.style.opacity = calcValue(sceneValues.stickyMsg00OpacityOut, currentYOffset);
+     sceneObjs.stickyMsg00.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg00TransformOut, currentYOffset)}%, 0)`;
     }
 
     if (scrollPercentage <= 0.55) {
-     sceneObjs.stickyMsg01.style.opacity = calcValue(
-      sceneValues.stickyMsg01OpacityIn,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg01.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg01TransformIn,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg01.style.opacity = calcValue(sceneValues.stickyMsg01OpacityIn, currentYOffset);
+     sceneObjs.stickyMsg01.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg01TransformIn, currentYOffset)}%, 0)`;
     } else {
-     sceneObjs.stickyMsg01.style.opacity = calcValue(
-      sceneValues.stickyMsg01OpacityOut,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg01.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg01TransformOut,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg01.style.opacity = calcValue(sceneValues.stickyMsg01OpacityOut, currentYOffset);
+     sceneObjs.stickyMsg01.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg01TransformOut, currentYOffset)}%, 0)`;
     }
 
     if (scrollPercentage <= 0.8) {
-     sceneObjs.stickyMsg02.style.opacity = calcValue(
-      sceneValues.stickyMsg02OpacityIn,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg02.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg02TransformIn,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg02.style.opacity = calcValue(sceneValues.stickyMsg02OpacityIn, currentYOffset);
+     sceneObjs.stickyMsg02.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg02TransformIn, currentYOffset)}%, 0)`;
     } else {
-     sceneObjs.stickyMsg02.style.opacity = calcValue(
-      sceneValues.stickyMsg02OpacityOut,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg02.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg02TransformOut,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg02.style.opacity = calcValue(sceneValues.stickyMsg02OpacityOut, currentYOffset);
+     sceneObjs.stickyMsg02.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg02TransformOut, currentYOffset)}%, 0)`;
     }
     break;
 
    case 2:
     // 현재 scene 에 적용할 CSS 값 선언하기
     if (scrollPercentage <= 0.3) {
-     sceneObjs.stickyMsg20.style.opacity = calcValue(
-      sceneValues.stickyMsg20OpacityIn,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg20.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg20TransformIn,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg20.style.opacity = calcValue(sceneValues.stickyMsg20OpacityIn, currentYOffset);
+     sceneObjs.stickyMsg20.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg20TransformIn, currentYOffset)}%, 0)`;
     } else {
-     sceneObjs.stickyMsg20.style.opacity = calcValue(
-      sceneValues.stickyMsg20OpacityOut,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg20.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg20TransformOut,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg20.style.opacity = calcValue(sceneValues.stickyMsg20OpacityOut, currentYOffset);
+     sceneObjs.stickyMsg20.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg20TransformOut, currentYOffset)}%, 0)`;
     }
 
     if (scrollPercentage <= 0.55) {
-     sceneObjs.stickyMsg21.style.opacity = calcValue(
-      sceneValues.stickyMsg21OpacityIn,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg21.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg21TransformIn,
-      currentYOffset
-     )}%, 0)`;
-     sceneObjs.stickyPin21.style.height = `${calcValue(
-      sceneValues.stickyPin21Height,
-      currentYOffset
-     )}px`;
+     sceneObjs.stickyMsg21.style.opacity = calcValue(sceneValues.stickyMsg21OpacityIn, currentYOffset);
+     sceneObjs.stickyMsg21.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg21TransformIn, currentYOffset)}%, 0)`;
+     sceneObjs.stickyPin21.style.height = `${calcValue(sceneValues.stickyPin21Height, currentYOffset)}px`;
     } else {
-     sceneObjs.stickyMsg21.style.opacity = calcValue(
-      sceneValues.stickyMsg21OpacityOut,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg21.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg21TransformOut,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg21.style.opacity = calcValue(sceneValues.stickyMsg21OpacityOut, currentYOffset);
+     sceneObjs.stickyMsg21.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg21TransformOut, currentYOffset)}%, 0)`;
     }
 
     if (scrollPercentage <= 0.8) {
-     sceneObjs.stickyMsg22.style.opacity = calcValue(
-      sceneValues.stickyMsg22OpacityIn,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg22.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg22TransformIn,
-      currentYOffset
-     )}%, 0)`;
-     sceneObjs.stickyPin22.style.height = `${calcValue(
-      sceneValues.stickyPin22Height,
-      currentYOffset
-     )}px`;
+     sceneObjs.stickyMsg22.style.opacity = calcValue(sceneValues.stickyMsg22OpacityIn, currentYOffset);
+     sceneObjs.stickyMsg22.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg22TransformIn, currentYOffset)}%, 0)`;
+     sceneObjs.stickyPin22.style.height = `${calcValue(sceneValues.stickyPin22Height, currentYOffset)}px`;
     } else {
-     sceneObjs.stickyMsg22.style.opacity = calcValue(
-      sceneValues.stickyMsg22OpacityOut,
-      currentYOffset
-     );
-     sceneObjs.stickyMsg22.style.transform = `translate3d(0, ${calcValue(
-      sceneValues.stickyMsg22TransformOut,
-      currentYOffset
-     )}%, 0)`;
+     sceneObjs.stickyMsg22.style.opacity = calcValue(sceneValues.stickyMsg22OpacityOut, currentYOffset);
+     sceneObjs.stickyMsg22.style.transform = `translate3d(0, ${calcValue(sceneValues.stickyMsg22TransformOut, currentYOffset)}%, 0)`;
     }
     break;
 
