@@ -21,3 +21,32 @@ function addNumber() {
  i += 1;
 }
 ```
+
+# 240218
+
+## new Image()
+
+HTML 안에 새로운 이미지를 생성하는 함수. For 반복문과 함께 사용하면 굿.
+
+```js
+createImg = new Image();
+```
+
+## Canvas
+
+HTML 안에 캔버스를 만들어 2D 또는 3D 를 그릴 수 있게 하는 JS API 로, 기본적으로 canvas 엘리먼트와 그 안에 그려질 context 라는 내용을 선언해 동작시킨다.
+
+```html
+<body>
+ <canvas></canvas>
+</body>
+```
+
+```js
+// 1. 캔버스와 컨텍스트를 호출한다.
+const canvas = document.querySelector(canvas);
+const ctx = canvas.getContext("2d");
+
+// 2. 캔버스에 그린다.
+.....
+```

@@ -8,7 +8,7 @@
 }
 
 html {
-	font-family: 'Pretendard', sans-serif;
+ font-family: "Pretendard", sans-serif;
  font-size: 16px;
 }
 
@@ -33,6 +33,7 @@ header > nav.global-nav {
  position: absolute;
  padding: 0.75rem;
  width: 100%;
+ z-index: 50;
 }
 
 header > nav.global-nav > ul {
@@ -52,8 +53,8 @@ nav.local-nav {
  border-bottom: 1px solid var(--main-light-gray);
  position: absolute;
  top: calc(0.75rem * 3);
- background-color: #fff;
  width: 100%;
+ z-index: 50;
 }
 
 nav.local-nav > .product-name {
@@ -128,18 +129,18 @@ nav.local-nav > ul > li:last-child > a {
 }
 
 .scroll-section-2 > div.main-message > small {
- font-size: 1.5rem;
+ font-size: 1.25rem;
  line-height: 140%;
  display: block;
  text-align: start;
 }
 
-.scroll-section-2 > div.main-message:nth-child(2) > small,
-.scroll-section-2 > div.main-message:nth-child(3) > small {
+.scroll-section-2 > div.main-message:nth-child(2) > .sticky-elem__cont > small,
+.scroll-section-2 > div.main-message:nth-child(3) > .sticky-elem__cont > small {
  font-size: 1rem;
 }
 
-.scroll-section-2 > div.main-message > div > .pin {
+.scroll-section-2 > div.main-message > .sticky-elem__cont > .pin {
  width: 1px;
  background-color: var(--main-black);
  margin-top: 10px;
@@ -170,22 +171,30 @@ footer > p {
  display: flex;
 }
 
-
-
-
-
-
-
-
-
 @media (min-width: 834px) {
  html {
-  font-size: 90%;
+  /* font-size: 90%; */
  }
- 
+
+ header > nav.global-nav > ul > li > a {
+  font-size: 1rem;
+ }
+
+ nav.local-nav > .product-name {
+  font-size: 1.5rem;
+ }
+
+ nav.local-nav > ul > li {
+  font-size: 1rem;
+ }
+
  /* 컨텐츠 */
  .scroll-section {
   padding: 40vh 1.5rem 0 1.5rem;
+ }
+
+ .scroll-section-0 > .sticky-canvas > canvas {
+  background-color: hsla(0, 0%, 55%, 0.3);
  }
 
  .scroll-section-0 > h1 {
@@ -197,17 +206,30 @@ footer > p {
   font-weight: 800;
   line-height: 1;
  }
- 
+
  .scroll-section-1 > p > strong,
  .scroll-section-3 > p > strong {
   font-size: 4rem;
   font-weight: 800;
  }
 
- .scroll-section-2 > div.main-message:nth-child(2) > .sticky-elem__contain,
- .scroll-section-2 > div.main-message:nth-child(3) > .sticky-elem__contain {
+ .scroll-section > div.main-message > p {
+  font-size: 5rem;
+ }
+
+ .scroll-section-2 > div.main-message > small {
+  font-size: 1.5rem;
+ }
+
+ .scroll-section-2 > div.main-message:nth-child(2) > .sticky-elem__cont,
+ .scroll-section-2 > div.main-message:nth-child(3) > .sticky-elem__cont {
   right: 30%;
   top: 25%;
-  width: 250px;
+  width: 300px;
+ }
+
+ .scroll-section-2 > div.main-message:nth-child(2) > .sticky-elem__con > small,
+ .scroll-section-2 > div.main-message:nth-child(3) > .sticky-elem__con > small {
+  font-size: 1.5rem;
  }
 }
