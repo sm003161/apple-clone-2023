@@ -34,11 +34,11 @@ createImg = new Image();
 
 ## Canvas
 
-HTML 안에 캔버스를 만들어 2D 또는 3D 를 그릴 수 있게 하는 JS API 로, 기본적으로 canvas 엘리먼트와 그 안에 그려질 context 라는 내용을 선언해 동작시킨다.
+HTML 안에 캔버스를 만들어 2D 또는 3D 를 그릴 수 있게 하는 JS API 로, 기본적으로 canvas 엘리먼트와 그 안에 그려질 context 라는 내용을 선언해 동작시킨다. 캔버스의 크기는 CSS가 아닌 width, height 속성으로 지정해야 이미지 기본 크기/비율을 변형하지 않는다.
 
 ```html
 <body>
- <canvas></canvas>
+ <canvas width="1920" height="1080"></canvas>
 </body>
 ```
 

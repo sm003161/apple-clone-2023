@@ -119,6 +119,9 @@
    }
   }
   document.body.setAttribute("id", `js_showScene${currentScene}`);
+
+  const heightRatio = window.innerHeight / 720;
+  sceneInfo[currentScene].objs.canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
  }
 
  function calcValue(sceneValues, currentYOffset) {
@@ -159,7 +162,6 @@
    case 0:
     let activeSequence = Math.round(calcValue(sceneValues.canvasImgIndex, currentYOffset));
     sceneInfo[0].objs.ctx.drawImage(sceneInfo[0].objs.imgObj[activeSequence], 0, 0);
-    console.log(sceneInfo[0].objs.imgObj[activeSequence]);
 
     // 현재 scene 에 적용할 CSS 값 선언하기
     if (scrollPercentage <= 0.3) {
