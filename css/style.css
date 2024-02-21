@@ -89,6 +89,9 @@ nav.local-nav > ul > li:last-child > a {
  font-size: 3.75rem;
  text-align: center;
  line-height: 1;
+ color: white;
+ position: relative;
+ z-index: 2;
 }
 
 .main-message {
@@ -205,7 +208,7 @@ footer > p {
 
  /* 컨텐츠 */
  .scroll-section {
-  padding: 40vh 1.5rem 0 1.5rem;
+  padding: 45vh 1.5rem 0 1.5rem;
  }
 
  .scroll-section-0 > h1 {

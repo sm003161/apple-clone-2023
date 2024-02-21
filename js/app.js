@@ -33,6 +33,7 @@
     stickyMsg02TransformOut: [-5, -8, { start: 0.8, end: 0.83 }],
     canvasImgs: 300,
     canvasImgIndex: [0, 299],
+    canvasOpacityOut: [1, 0, { start: 0.85, end: 0.95 }],
    },
   },
   {
@@ -91,7 +92,7 @@
   } else {
    for (let i = 0; i < sceneInfo[currentScene].values.canvasImgs; i++) {
     imgElem = new Image();
-    imgElem.src = `../assets/video/00/astronomy_stars_${i}.jpg`;
+    imgElem.src = `./assets/video/00/astronomy_stars_${i}.jpg`;
     sceneInfo[currentScene].objs.imgObj.push(imgElem);
    }
   }
@@ -157,11 +158,13 @@
   const currentYOffset = yOffset - prevScrollHeight;
   const scrollHeight = sceneInfo[currentScene].scrollHeight;
   const scrollPercentage = currentYOffset / scrollHeight;
+  console.log(scrollPercentage);
 
   switch (currentScene) {
    case 0:
     let activeSequence = Math.round(calcValue(sceneValues.canvasImgIndex, currentYOffset));
     sceneInfo[0].objs.ctx.drawImage(sceneInfo[0].objs.imgObj[activeSequence], 0, 0);
+    sceneObjs.canvas.style.opacity = calcValue(sceneValues.canvasOpacityOut, currentYOffset);
 
     // 현재 scene 에 적용할 CSS 값 선언하기
     if (scrollPercentage <= 0.3) {
@@ -243,7 +246,11 @@
   playAnimation();
  }
 
- window.addEventListener("load", setLayout);
+ window.addEventListener("load", () => {
+  setLayout();
+  let activeSequence = Math.round(calcValue(sceneInfo[0].values.canvasImgIndex, yOffset));
+  sceneInfo[0].objs.ctx.drawImage(sceneInfo[0].objs.imgObj[activeSequence], 0, 0);
+ });
  window.addEventListener("resize", setLayout);
  window.addEventListener("scroll", () => {
   yOffset = window.scrollY;
